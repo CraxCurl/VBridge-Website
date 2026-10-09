@@ -28,20 +28,35 @@ function initNavbar() {
   });
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+    function closeNav() {
+      navLinks.classList.remove('open');
       const icon = mobileToggle.querySelector('i');
       if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-xmark');
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    }
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.toggle('open');
+      const icon = mobileToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars', !isOpen);
+        icon.classList.toggle('fa-xmark', isOpen);
       }
     });
 
-    // Close menu when clicking link
+    // Close menu when clicking a nav link
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', () => closeNav());
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target)) {
+        closeNav();
+      }
     });
   }
 }
@@ -280,7 +295,8 @@ function initSmoothScroll() {
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
-        const headerOffset = 90;
+        const isMobile = window.innerWidth <= 768;
+        const headerOffset = isMobile ? 64 : 90;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 

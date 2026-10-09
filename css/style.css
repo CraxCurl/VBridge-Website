@@ -1610,90 +1610,484 @@ a:hover {
 /* ==========================================================================
    RESPONSIVE DESIGN (Tablets & Mobile)
    ========================================================================== */
+
+/* ---- Tablet (≤ 1024px) ---- */
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 2.8rem;
   }
-  
+
   .mockup-grid {
     grid-template-columns: 1fr;
-    max-width: 650px;
+    max-width: 680px;
     margin: 0 auto;
+  }
+
+  .mobile-app-card {
+    border-radius: 24px;
   }
 
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .download-cards-grid {
-    grid-template-columns: 1fr;
-    max-width: 550px;
-    margin: 0 auto 50px auto;
+    gap: 24px;
   }
 
   .steps-container {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .step-preview-panel {
+    min-height: 320px;
+    padding: 28px;
+  }
+
+  .download-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
   }
 
   .footer-top {
     grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 }
 
+/* ---- Mobile (≤ 768px) ---- */
 @media (max-width: 768px) {
+  /* Nav */
   .header-nav {
-    height: 70px;
+    height: 64px;
   }
 
   .nav-container {
-    height: 70px;
+    height: 64px;
+    padding: 0 16px;
   }
 
+  /* Hide GitHub button and Download button text on mobile to save space */
+  .btn-github-nav span,
+  .btn-nav-download span {
+    display: none;
+  }
+
+  .btn-github-nav {
+    padding: 8px 10px;
+  }
+
+  .btn-nav-download {
+    padding: 8px 12px;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Slide-down mobile nav */
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 64px;
     left: 0;
     right: 0;
-    background: #001433;
+    z-index: 999;
+    background: rgba(0, 20, 51, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 30px;
-    gap: 20px;
+    padding: 24px 20px;
+    gap: 6px;
     border-bottom: 1px solid rgba(0, 209, 255, 0.2);
-    transform: translateY(-150%);
-    transition: transform var(--transition-normal);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease;
+    pointer-events: none;
   }
 
   .nav-links.open {
     transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .mobile-toggle {
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    width: 100%;
     display: block;
   }
 
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 60px 0 80px;
+  }
+
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
   }
 
   .hero-description {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge-pill {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .btn-cta-primary,
+  .btn-cta-secondary {
+    font-size: 1rem;
+    padding: 14px 24px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-metrics {
+    gap: 10px;
+    margin-bottom: 44px;
+  }
+
+  .metric-item {
+    font-size: 0.82rem;
+    padding: 8px 14px;
+  }
+
+  /* Mockup */
+  .hero-mockup-container {
+    padding: 0 4px;
+  }
+
+  .mockup-grid {
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .desktop-app-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .desktop-ui-body {
+    padding: 16px;
+  }
+
+  .desktop-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .stat-chip {
+    padding: 8px 10px;
+  }
+
+  .stat-chip-value {
+    font-size: 0.9rem;
+  }
+
+  /* Sections */
+  .section-py {
+    padding: 70px 0;
+  }
+
+  .section-py-sm {
+    padding: 50px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 28px 24px;
+  }
+
+  /* Steps */
+  .steps-container {
+    gap: 24px;
+  }
+
+  .step-tab-btn {
+    padding: 18px 20px;
+    gap: 14px;
+  }
+
+  .step-info h4 {
     font-size: 1.05rem;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
+  .step-preview-panel {
+    padding: 24px 20px;
+    min-height: auto;
   }
 
-  .footer-top {
-    grid-template-columns: 1fr;
+  .preview-graphic {
+    padding: 18px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+  /* Comparison table — horizontal scroll with sticky first column */
+  .comparison-card-wrap {
+    border-radius: var(--radius-lg);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    white-space: normal;
+    min-width: 120px;
+  }
+
+  .comparison-table th {
+    font-size: 0.78rem;
+  }
+
+  .comparison-table td.feature-col-title {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+    font-size: 0.82rem;
+    min-width: 130px;
+  }
+
+  .comparison-table th:first-child {
+    position: sticky;
+    left: 0;
+    background: #F8FAFC;
+    z-index: 3;
+  }
+
+  .check-badge,
+  .cross-badge,
+  .warn-badge {
+    font-size: 0.78rem;
+    padding: 3px 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Downloads */
+  .download-cards-grid {
+    max-width: 100%;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .download-card {
+    padding: 28px 22px;
   }
 
   .sys-req-box {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  /* FAQ */
+  .faq-question-btn {
+    font-size: 0.98rem;
+    padding: 18px 20px;
+  }
+
+  .faq-answer {
+    font-size: 0.92rem;
+    padding: 0 20px;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .site-footer {
+    padding: 50px 0 24px;
+  }
+
+  /* Toast */
+  .toast-notice {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    font-size: 0.88rem;
   }
 }
+
+/* ---- Small Phones (≤ 480px) ---- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-section {
+    padding: 48px 0 64px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-description {
+    font-size: 0.96rem;
+  }
+
+  .badge-text {
+    font-size: 0.8rem;
+  }
+
+  .metric-item {
+    font-size: 0.78rem;
+    padding: 7px 12px;
+  }
+
+  .btn-cta-primary,
+  .btn-cta-secondary {
+    font-size: 0.95rem;
+    padding: 13px 20px;
+  }
+
+  /* Desktop mockup: hide the stats row on very small screens to reduce clutter */
+  .desktop-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-chip:last-child {
+    grid-column: span 2;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .feature-card {
+    padding: 24px 18px;
+  }
+
+  .feature-icon-box {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .step-tab-btn {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .step-info h4 {
+    font-size: 0.98rem;
+  }
+
+  .step-info p {
+    font-size: 0.86rem;
+  }
+
+  .download-card {
+    padding: 24px 18px;
+  }
+
+  .download-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .btn-download-action {
+    font-size: 0.92rem;
+    padding: 12px 16px;
+  }
+
+  .faq-question-btn {
+    font-size: 0.92rem;
+    padding: 16px 18px;
+  }
+
+  .faq-icon-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .btn-nav-download {
+    font-size: 0.8rem;
+    padding: 7px 10px;
+  }
+
+  .logo-brand {
+    font-size: 1.2rem;
+  }
+
+  .logo-icon-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-badge {
+    display: none;
+  }
+}
+
