@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VBridge — Ultra Low-Latency Phone to PC Audio Relay & Mixing System</title>
+  <meta name="description" content="Stream crystal-clear 48kHz audio from any Android phone to your Windows PC and Bluetooth earbuds with ultra-low 4ms latency over Wi-Fi. Free, open-source, and 100% private.">
+  <meta name="keywords" content="VBridge, Android audio to PC, PC audio mixer, stream phone audio to laptop, low latency audio over wifi, windows audio relay, bluetooth earbuds concurrent mixing">
+  <meta name="theme-color" content="#001433">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="VBridge — Real-Time Android to PC Audio Bridge">
+  <meta property="og:description" content="Stream uncompressed 48kHz stereo audio from your phone to your Windows laptop with under 4ms latency. No cables required.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/app_icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/app_icon.png">
+  <link rel="shortcut icon" href="assets/app_icon.ico">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       STICKY NAVIGATION BAR
+       ========================================================================= -->
+  <header class="header-nav" id="mainHeader">
+    <div class="container nav-container">
+      <!-- Logo Brand -->
+      <a href="#" class="logo-brand" aria-label="VBridge Homepage">
+        <div class="logo-icon-wrap">
+          <img src="assets/app_icon.png" alt="VBridge Logo Icon" width="28" height="28">
+        </div>
+        <div class="logo-text">
+          <span class="brand-v">VBridge</span>
+          <span class="logo-badge">v1.0</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#comparison">Tech Specs & Latency</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="https://github.com/CraxCurl/VBridge" target="_blank" rel="noopener noreferrer" class="btn-github-nav" title="View Source on GitHub">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="#downloads" class="btn-nav-download">
+          <i class="fa-solid fa-download"></i>
+          <span>Download Free</span>
+        </a>
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MOZ-STYLE HERO SECTION
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="hero-glow-bg"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="container hero-content">
+      <!-- Pill Badge -->
+      <div class="hero-badge-pill">
+        <span class="badge-tag">Open Source</span>
+        <span class="badge-text">Ultra-Low 4ms UDP Audio Relay System</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title">
+        Seamless Phone Audio on Your <br>
+        <span class="gradient-text">Windows Laptop & Earbuds</span> — In Real Time.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-description">
+        Stream uncompressed 48kHz audio from any Android app directly to your PC with ultra-low 4ms latency over Wi-Fi. 
+        Listen to laptop games, calls, and phone media concurrently in one pair of Bluetooth earbuds.
+      </p>
+
+      <!-- Dual Call to Action Buttons -->
+      <div class="hero-cta-group">
+        <a href="downloads/VBridge-Setup.exe" download="VBridge-Setup.exe" class="btn-cta-primary" id="heroWinDownload">
+          <span class="btn-icon"><i class="fa-brands fa-windows"></i></span>
+          <span>Download for Windows</span>
+        </a>
+        <a href="downloads/VBridge.apk" download="VBridge.apk" class="btn-cta-secondary" id="heroAndroidDownload">
+          <span class="btn-icon"><i class="fa-brands fa-android"></i></span>
+          <span>Download Android App</span>
+        </a>
+      </div>
+
+      <!-- Live Metric Badges -->
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <span class="pulse-dot"></span>
+          <span>Latency: <strong>&lt; 4ms RTT</strong></span>
+        </div>
+        <div class="metric-item">
+          <i class="fa-solid fa-waveform" style="color: var(--moz-cyan);"></i>
+          <span>Fidelity: <strong>48kHz Stereo PCM</strong></span>
+        </div>
+        <div class="metric-item">
+          <i class="fa-solid fa-shield-halved" style="color: #34D399;"></i>
+          <span>Network: <strong>100% Local Wi-Fi</strong></span>
+        </div>
+        <div class="metric-item">
+          <i class="fa-solid fa-bolt" style="color: #FBBF24;"></i>
+          <span>Protocol: <strong>Lossless UDP Stream</strong></span>
+        </div>
+      </div>
+
+      <!-- Interactive Hero Mockup UI Grid -->
+      <div class="hero-mockup-container">
+        <div class="mockup-grid">
+          
+          <!-- Windows Desktop App Mockup -->
+          <div class="desktop-app-card">
+            <!-- Window Titlebar -->
+            <div class="window-titlebar">
+              <div class="window-controls">
+                <span class="win-dot dot-red"></span>
+                <span class="win-dot dot-yellow"></span>
+                <span class="win-dot dot-green"></span>
+              </div>
+              <div class="window-title">
+                <i class="fa-solid fa-headphones-simple" style="color: var(--moz-cyan);"></i>
+                <span>VBridge Desktop — Audio Relay Server</span>
+              </div>
+              <span class="window-status-pill">
+                <i class="fa-solid fa-circle" style="font-size: 0.5rem; vertical-align: middle;"></i> Active Stream
+              </span>
+            </div>
+
+            <!-- Body of Desktop App -->
+            <div class="desktop-ui-body">
+              <div class="audio-live-header">
+                <div class="stream-info">
+                  <h4>Pixel 8 Pro (192.168.1.104)</h4>
+                  <p>UDP Port: 8080 &bull; Raw PCM 16-bit 48kHz Stereo</p>
+                </div>
+                <div class="live-badge-stream">
+                  <i class="fa-solid fa-tower-broadcast"></i> RECEIVING
+                </div>
+              </div>
+
+              <!-- Audio Visualizer Waveform Canvas -->
+              <div class="visualizer-box">
+                <div class="visualizer-top">
+                  <span>REAL-TIME PCM WAVEFORM SPECTRUM</span>
+                  <span style="color: var(--moz-cyan);">BUFFER: 4.2ms</span>
+                </div>
+                <canvas id="audioCanvas"></canvas>
+              </div>
+
+              <!-- Live Stats Row -->
+              <div class="desktop-stats-row">
+                <div class="stat-chip">
+                  <div class="stat-chip-label">Round-Trip Latency</div>
+                  <div class="stat-chip-value cyan" id="mockLatencyVal">3.4 ms</div>
+                </div>
+                <div class="stat-chip">
+                  <div class="stat-chip-label">Audio Bitrate</div>
+                  <div class="stat-chip-value" id="mockBitrateVal">1,536 kbps</div>
+                </div>
+                <div class="stat-chip">
+                  <div class="stat-chip-label">Sample Rate</div>
+                  <div class="stat-chip-value green" id="mockPcmVal">48,000 Hz</div>
+                </div>
+              </div>
+
+              <!-- Volume Control Slider -->
+              <div class="volume-control-wrap">
+                <i class="fa-solid fa-volume-high" style="color: var(--moz-cyan);"></i>
+                <input type="range" class="volume-slider" id="mockVolumeSlider" min="0" max="100" value="85" aria-label="Audio Relay Output Volume">
+                <span class="volume-val" id="mockVolumeVal">85%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Android Mobile App Mockup -->
+          <div class="mobile-app-card">
+            <div class="phone-speaker-notch"></div>
+            <div class="mobile-header">
+              <h4>VBridge Android</h4>
+              <span class="mobile-badge"><i class="fa-solid fa-wifi"></i> CONNECTED</span>
+            </div>
+
+            <!-- Camera Scanner Mockup Box -->
+            <div class="qr-scanner-mockup">
+              <div class="scanner-laser"></div>
+              <div class="qr-visual-box qr-code-target">
+                <!-- Injected via JavaScript -->
+              </div>
+              <div class="scanner-tip">
+                <i class="fa-solid fa-qrcode" style="color: var(--moz-cyan);"></i> Point camera at laptop screen
+              </div>
+              <div class="mobile-status-connected">
+                <i class="fa-solid fa-circle-check"></i> Streaming Audio to Windows PC
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CORE FEATURES SECTION ("Why Choose VBridge")
+       ========================================================================= -->
+  <section class="section-py features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Highlights</span>
+        <h2 class="section-title">Built for Gamers, Producers & Multitaskers</h2>
+        <p class="section-subtitle">
+          Say goodbye to clumsy Bluetooth Multipoint switches, latency spikes, and messy 3.5mm splitter cables.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <h3>Simultaneous Audio Mixing</h3>
+          <p>
+            Listen to your Windows laptop game, Discord voice chat, or YouTube video while concurrently hearing your phone calls, voice notes, and Spotify through the same Bluetooth earbuds.
+          </p>
+          <span class="feature-badge-inline">No Audio Hijacking</span>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-wave-square"></i>
+          </div>
+          <h3>Pure 48kHz Digital PCM</h3>
+          <p>
+            Zero compression artifacts. Audio is captured straight from Android's internal audio bus and streamed as uncompressed 48,000 Hz 16-bit PCM for studio-grade acoustic clarity.
+          </p>
+          <span class="feature-badge-inline">Lossless High-Res</span>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+          <h3>Instant QR Code Pairing</h3>
+          <p>
+            Paytm & Google Pay style camera scanner. Open the app, point your camera at your laptop's screen, and you are connected in under 0.5 seconds. Remembers your laptop for 1-tap auto-reconnect.
+          </p>
+          <span class="feature-badge-inline">0-Config Setup</span>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-ghost"></i>
+          </div>
+          <h3>Silent System Tray & Auto-Start</h3>
+          <p>
+            Runs seamlessly in the background without cluttering your taskbar. Minimize straight to the Windows notification tray with automatic startup on Windows boot.
+          </p>
+          <span class="feature-badge-inline">Zero UI Friction</span>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3>100% Local & Zero Cloud</h3>
+          <p>
+            VBridge communicates directly peer-to-peer over your local Wi-Fi subnet via ultra-fast UDP packets. No external servers, no logins, no telemetry, and zero audio ever leaves your room.
+          </p>
+          <span class="feature-badge-inline">Total Privacy</span>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i class="fa-solid fa-gauge-high"></i>
+          </div>
+          <h3>Adaptive Latency Jitter Buffer</h3>
+          <p>
+            Intelligent micro-buffering algorithm dynamically compensates for Wi-Fi packet jitter while maintaining an ultra-tight round-trip latency of 3 to 5 milliseconds.
+          </p>
+          <span class="feature-badge-inline">Gaming Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       INTERACTIVE 3-STEP "HOW IT WORKS" WALKTHROUGH
+       ========================================================================= -->
+  <section class="section-py how-it-works-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Frictionless Onboarding</span>
+        <h2 class="section-title">Up and Running in 30 Seconds</h2>
+        <p class="section-subtitle">
+          No complicated IP configurations or router port-forwarding needed. Simple 3-step connection.
+        </p>
+      </div>
+
+      <div class="steps-container">
+        <!-- Interactive Tabs Navigation -->
+        <div class="step-tabs-list">
+          <!-- Step 1 Button -->
+          <div class="step-tab-btn active" data-step="step-1">
+            <div class="step-number">1</div>
+            <div class="step-info">
+              <h4>Launch VBridge on Windows</h4>
+              <p>Install and start the VBridge desktop server. It automatically detects your local Wi-Fi IP and presents a dynamic QR pairing code.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 Button -->
+          <div class="step-tab-btn" data-step="step-2">
+            <div class="step-number">2</div>
+            <div class="step-info">
+              <h4>Scan QR with Android Companion</h4>
+              <p>Open the VBridge Android companion app, tap Scan, and point your camera at the PC screen. Instant 1-tap connection.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 Button -->
+          <div class="step-tab-btn" data-step="step-3">
+            <div class="step-number">3</div>
+            <div class="step-info">
+              <h4>Listen & Mix Concurrently</h4>
+              <p>Your phone audio immediately flows through your laptop speakers or Bluetooth earbuds with crystal-clear 48kHz fidelity.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Preview Panel Display -->
+        <div class="step-preview-panel">
+          
+          <!-- Step 1 Content Preview -->
+          <div class="step-preview-content active" data-step-content="step-1">
+            <div class="preview-graphic">
+              <div class="graphic-header">
+                <span style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;"><i class="fa-brands fa-windows" style="color: var(--moz-cyan);"></i> Windows Desktop Server</span>
+                <span class="graphic-pill">STEP 1</span>
+              </div>
+              <div class="preview-highlight">Dynamic Wi-Fi Binding & QR Generation</div>
+              <div class="preview-sub">VBridge initializes the PyAudio WASAPI loopback driver and UDP listener socket on port 8080.</div>
+              <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; background: #001026; padding: 12px; border-radius: 8px; color: #38BDF8;">
+                [INFO] Bound to 192.168.1.104:8080<br>
+                [INFO] Ready for client connection...
+              </div>
+            </div>
+            <p style="color: #94A3B8; font-size: 0.9rem;">
+              <i class="fa-solid fa-check" style="color: var(--moz-cyan);"></i> Automatic Windows firewall exception handler included.
+            </p>
+          </div>
+
+          <!-- Step 2 Content Preview -->
+          <div class="step-preview-content" data-step-content="step-2">
+            <div class="preview-graphic">
+              <div class="graphic-header">
+                <span style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;"><i class="fa-brands fa-android" style="color: #34D399;"></i> Android Companion App</span>
+                <span class="graphic-pill">STEP 2</span>
+              </div>
+              <div class="preview-highlight">Camera Laser Scanner & MediaProjection</div>
+              <div class="preview-sub">Captures the QR code payload: IP, Port, Sample Rate, and Handshake Token in 50 milliseconds.</div>
+              <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; background: #001026; padding: 12px; border-radius: 8px; color: #34D399;">
+                [SUCCESS] QR Decoded: 192.168.1.104:8080<br>
+                [AUDIO] AudioRecord stream started (48000Hz PCM)
+              </div>
+            </div>
+            <p style="color: #94A3B8; font-size: 0.9rem;">
+              <i class="fa-solid fa-check" style="color: #34D399;"></i> No manual IP typing ever required.
+            </p>
+          </div>
+
+          <!-- Step 3 Content Preview -->
+          <div class="step-preview-content" data-step-content="step-3">
+            <div class="preview-graphic">
+              <div class="graphic-header">
+                <span style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;"><i class="fa-solid fa-headphones" style="color: var(--moz-cyan);"></i> Simultaneous Audio Stream</span>
+                <span class="graphic-pill">STEP 3</span>
+              </div>
+              <div class="preview-highlight">Full Dual-Device Mixing at 4ms Latency</div>
+              <div class="preview-sub">Your PC OS mixer blends phone audio directly with PC audio into your Bluetooth headphones.</div>
+              <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; background: #001026; padding: 12px; border-radius: 8px; color: #FBBF24;">
+                [MIXER] PC Audio + Phone Audio -> Bluetooth Earbuds<br>
+                [METRICS] Latency: 3.4ms | Packet Drop: 0.00%
+              </div>
+            </div>
+            <p style="color: #94A3B8; font-size: 0.9rem;">
+              <i class="fa-solid fa-check" style="color: #FBBF24;"></i> Zero switching delay when receiving incoming phone notifications.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       LATENCY & PERFORMANCE BENCHMARK COMPARISON TABLE
+       ========================================================================= -->
+  <section class="section-py comparison-section" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Performance Benchmark</span>
+        <h2 class="section-title">How VBridge Compares to Alternatives</h2>
+        <p class="section-subtitle">
+          See why UDP streaming beats Bluetooth Multipoint switching and bulky hardware splitter cables.
+        </p>
+      </div>
+
+      <div class="comparison-card-wrap">
+        <div style="overflow-x: auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Feature / Performance Metric</th>
+                <th class="vbridge-col-head" style="width: 24%;">
+                  <i class="fa-solid fa-bolt"></i> VBridge (Wi-Fi UDP)
+                </th>
+                <th style="width: 24%;">Bluetooth Multipoint</th>
+                <th style="width: 24%;">Hardware Aux Splitter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-stopwatch" style="color: var(--moz-blue);"></i> Round-Trip Latency
+                </td>
+                <td class="vbridge-col-body">
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> 3 – 5 ms (Real-Time)</span>
+                </td>
+                <td>
+                  <span class="cross-badge"><i class="fa-solid fa-xmark"></i> 150 – 250 ms (Laggy)</span>
+                </td>
+                <td>
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> ~0 ms (Analog)</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-shuffle" style="color: var(--moz-blue);"></i> Simultaneous Mixing
+                </td>
+                <td class="vbridge-col-body">
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> Yes (100% Concurrent)</span>
+                </td>
+                <td>
+                  <span class="cross-badge"><i class="fa-solid fa-xmark"></i> No (Cuts off other audio)</span>
+                </td>
+                <td>
+                  <span class="warn-badge"><i class="fa-solid fa-triangle-exclamation"></i> Volume Drop / Attenuation</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-compact-disc" style="color: var(--moz-blue);"></i> Audio Quality / Format
+                </td>
+                <td class="vbridge-col-body">
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> 48kHz Lossless PCM</span>
+                </td>
+                <td>
+                  <span class="warn-badge"><i class="fa-solid fa-triangle-exclamation"></i> SBC / AAC Compressed</span>
+                </td>
+                <td>
+                  <span class="warn-badge"><i class="fa-solid fa-triangle-exclamation"></i> Ground loop noise/buzz</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-cable-car" style="color: var(--moz-blue);"></i> Cable Requirement
+                </td>
+                <td class="vbridge-col-body">
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> 100% Wireless (Wi-Fi)</span>
+                </td>
+                <td>
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> Wireless</span>
+                </td>
+                <td>
+                  <span class="cross-badge"><i class="fa-solid fa-xmark"></i> 2 Aux Cables + Dongles</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-plug-circle-check" style="color: var(--moz-blue);"></i> Modern Phone Compatibility
+                </td>
+                <td class="vbridge-col-body">
+                  <span class="check-badge"><i class="fa-solid fa-check"></i> Any Android 10+ Device</span>
+                </td>
+                <td>
+                  <span class="warn-badge"><i class="fa-solid fa-triangle-exclamation"></i> Expensive Earbuds Only</span>
+                </td>
+                <td>
+                  <span class="cross-badge"><i class="fa-solid fa-xmark"></i> Needs 3.5mm Headphone Jack</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="feature-col-title">
+                  <i class="fa-solid fa-dollar-sign" style="color: var(--moz-blue);"></i> Cost
+                </td>
+                <td class="vbridge-col-body">
+                  <strong style="color: #059669; font-size: 1.05rem;">100% Free & Open Source</strong>
+                </td>
+                <td>
+                  <span>Requires $150+ Earbuds</span>
+                </td>
+                <td>
+                  <span>$25+ Splitter Hardware</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       DEDICATED DOWNLOAD HUB SECTION
+       ========================================================================= -->
+  <section class="section-py download-section" id="downloads">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag cyan">Download Center</span>
+        <h2 class="section-title light">Get VBridge for Windows & Android</h2>
+        <p class="section-subtitle light">
+          All downloads are clean, standalone binaries with zero bloatware or cloud dependencies.
+        </p>
+      </div>
+
+      <!-- Download Cards Grid -->
+      <div class="download-cards-grid">
+        
+        <!-- Windows Setup (Featured) -->
+        <div class="download-card featured">
+          <div class="featured-pill-top">Recommended for Windows</div>
+          <div class="download-card-header">
+            <div class="download-icon">
+              <i class="fa-brands fa-windows"></i>
+            </div>
+            <h3>Windows Installer</h3>
+            <div class="download-meta">
+              <span>Setup Wizard</span> &bull; <span>64-bit (.exe)</span> &bull; <span>54.7 MB</span>
+            </div>
+            <p class="download-desc">
+              Complete automated installer with desktop shortcut, Windows startup integration, and system tray background daemon.
+            </p>
+            <ul class="download-checklist">
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> Windows 10 & 11 (64-bit)</li>
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> Auto-start on boot option</li>
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> Firewall rules auto-configured</li>
+            </ul>
+          </div>
+          <div>
+            <a href="downloads/VBridge-Setup.exe" download="VBridge-Setup.exe" class="btn-download-action primary" id="btnWinSetup">
+              <i class="fa-solid fa-download"></i> Download VBridge-Setup.exe
+            </a>
+          </div>
+        </div>
+
+        <!-- Windows Portable Executable -->
+        <div class="download-card">
+          <div class="download-card-header">
+            <div class="download-icon">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <h3>Windows Portable</h3>
+            <div class="download-meta">
+              <span>Standalone Executable</span> &bull; <span>28.1 MB</span>
+            </div>
+            <p class="download-desc">
+              Zero installation required. Single portable binary ready to run immediately from your USB flash drive or Downloads folder.
+            </p>
+            <ul class="download-checklist">
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> No Admin privileges required</li>
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> Single self-contained binary</li>
+              <li><span class="bullet-check"><i class="fa-solid fa-circle-check"></i></span> Leaves zero registry footprint</li>
+            </ul>
+          </div>
+          <div>
+            <a href="downloads/VBridge.exe" download="VBridge.exe" class="btn-download-action secondary" id="btnWinPortable">
+              <i class="fa-solid fa-download"></i> Download VBridge.exe
+            </a>
+          </div>
+        </div>
+
+        <!-- Android APK Package -->
+        <div class="download-card">
+          <div class="download-card-header">
+            <div class="download-icon">
+              <i class="fa-brands fa-android"></i>
+            </div>
+            <h3>Android Companion</h3>
+            <div class="download-meta">
+              <span>Android APK</span> &bull; <span>13.8 MB</span> &bull; <span>v1.0</span>
+            </div>
+            <p class="download-desc">
+              Companion app for audio capture with built-in QR scanner and background audio relay service.
+            </p>
+            <!-- In-card QR code for phone scanning -->
+            <div class="apk-qr-box">
+              <div class="apk-qr-img-wrap qr-code-target">
+                <!-- QR SVG injected by JS -->
+              </div>
+              <div class="apk-qr-text">
+                <h5>Scan with Phone</h5>
+                <p>Point phone camera at this QR code to download directly on Android.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <a href="downloads/VBridge.apk" download="VBridge.apk" class="btn-download-action secondary" id="btnAndroidApk">
+              <i class="fa-solid fa-download"></i> Download VBridge.apk
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- System Requirements Grid Banner -->
+      <div class="sys-req-box">
+        <div class="sys-req-item">
+          <div class="sys-req-icon"><i class="fa-brands fa-windows"></i></div>
+          <div>
+            <h5>Windows Requirements</h5>
+            <p>Windows 10 / 11 (64-bit) &bull; WASAPI Audio Loopback &bull; 50 MB RAM</p>
+          </div>
+        </div>
+
+        <div class="sys-req-item">
+          <div class="sys-req-icon"><i class="fa-brands fa-android"></i></div>
+          <div>
+            <h5>Android Requirements</h5>
+            <p>Android 10+ (API 29+) &bull; MediaProjection Audio Capture API</p>
+          </div>
+        </div>
+
+        <div class="sys-req-item">
+          <div class="sys-req-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <div>
+            <h5>Network Requirements</h5>
+            <p>Local 2.4GHz / 5GHz Wi-Fi or Mobile Hotspot on same subnet</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       INTERACTIVE FAQ ACCORDION SECTION
+       ========================================================================= -->
+  <section class="section-py faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Frequently Asked Questions</span>
+        <h2 class="section-title">Everything You Need to Know</h2>
+        <p class="section-subtitle">
+          Have questions about Bluetooth mixing, latency, or firewall permissions? We've got you covered.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button class="faq-question-btn">
+            <span>Can I listen to my PC game and phone audio at the exact same time through one pair of Bluetooth earbuds?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <strong>Yes, 100%!</strong> This is the primary feature of VBridge. Your Bluetooth earbuds only need to pair with your Windows laptop. VBridge receives your phone's audio stream over Wi-Fi and feeds it into Windows' internal audio mixer, allowing you to hear both devices simultaneously with zero audio cut-off or delay.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>How does VBridge achieve under 4ms latency over Wi-Fi?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            VBridge avoids slow TCP handshakes and heavyweight media server frameworks. Instead, it utilizes raw UDP packet streaming with zero-copy ring buffers and WASAPI low-latency audio output buffers, delivering uncompressed PCM audio with sub-4 millisecond round-trip times.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>Does VBridge send any audio or data to the cloud?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <strong>Never.</strong> VBridge operates 100% peer-to-peer across your local private home Wi-Fi network or phone mobile hotspot. There are no cloud servers, no user accounts, no telemetry, and no data tracking. Your audio never leaves your local network.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>Which Android apps can stream their audio?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            On Android 10 and above, VBridge uses Android's official <code>AudioPlaybackCaptureConfiguration</code> API. Any app that plays audio (Spotify, YouTube, games, podcast players, Discord, social media feeds) is seamlessly captured and streamed unless an app explicitly prohibits capture (such as DRM-protected Netflix video streams).
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>Can I use VBridge if my laptop is connected via Ethernet cable?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            Yes! As long as your PC (on Ethernet) and your phone (on Wi-Fi) are connected to the same local router or subnet, VBridge will effortlessly route UDP packets between them.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>How do I enable auto-start on Windows boot?</span>
+            <span class="faq-icon-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            During setup using <code>VBridge-Setup.exe</code>, ensure the "Launch on Windows Startup" checkbox is checked. You can also toggle this at any time by right-clicking the VBridge icon in your Windows notification tray and checking "Start with Windows".
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MOZ-STYLE FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <h3>
+            <img src="assets/app_icon.png" alt="VBridge Logo" width="24" height="24">
+            <span>VBridge</span>
+          </h3>
+          <p>
+            Ultra low-latency audio relay system streaming crystal-clear 48kHz PCM audio from Android phones to Windows PCs and Bluetooth earbuds over Wi-Fi.
+          </p>
+          <div class="footer-meta-pill">
+            <i class="fa-solid fa-code-branch" style="color: var(--moz-cyan);"></i> Open Source under MIT License
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#comparison">Latency Benchmark</a></li>
+            <li><a href="#downloads">Download Hub</a></li>
+          </ul>
+        </div>
+
+        <!-- Downloads Column -->
+        <div class="footer-links-col">
+          <h4>Downloads</h4>
+          <ul>
+            <li><a href="downloads/VBridge-Setup.exe" download="VBridge-Setup.exe">Windows Setup (.exe)</a></li>
+            <li><a href="downloads/VBridge.exe" download="VBridge.exe">Windows Portable (.exe)</a></li>
+            <li><a href="downloads/VBridge.apk" download="VBridge.apk">Android App (.apk)</a></li>
+            <li><a href="https://github.com/CraxCurl/VBridge/releases" target="_blank" rel="noopener noreferrer">Release Notes</a></li>
+          </ul>
+        </div>
+
+        <!-- Community & Source Column -->
+        <div class="footer-links-col">
+          <h4>Developer & Source</h4>
+          <ul>
+            <li><a href="https://github.com/CraxCurl/VBridge" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Repository</a></li>
+            <li><a href="https://github.com/CraxCurl/VBridge/issues" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bug"></i> Issue Tracker</a></li>
+            <li><a href="https://github.com/CraxCurl/VBridge/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-contract"></i> MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong>VBridge</strong>. Crafted for ultra-low latency wireless audio performance.
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="https://github.com/CraxCurl/VBridge" target="_blank" rel="noopener noreferrer" style="color: #94A3B8;">
+            <i class="fa-brands fa-github" style="font-size: 1.2rem;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotice" class="toast-notice"></div>
+
+  <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

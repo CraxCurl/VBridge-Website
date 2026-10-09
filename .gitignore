@@ -1,0 +1,28 @@
+# .gitignore for VBridge-Website
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies (if any future tooling)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build / distribution artefacts
+/dist
+/build
+/out
+
+# IDE / editor directories
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Environment files
+.env
+
+# Binary downloads (keep them out of the repo)
+/downloads
