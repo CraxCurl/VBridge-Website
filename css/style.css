@@ -1866,7 +1866,7 @@ a:hover {
     padding: 18px;
   }
 
-  /* Comparison table — horizontal scroll with sticky first column */
+  /* Comparison table - horizontal scroll with sticky first column */
   .comparison-card-wrap {
     border-radius: var(--radius-lg);
   }
